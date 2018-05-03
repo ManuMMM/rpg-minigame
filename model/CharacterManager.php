@@ -8,7 +8,7 @@
  * @author Manu
  */
 
-class CharacterManager {
+class CharacterManager extends Manager {
     
     private $_db;
     
@@ -145,7 +145,7 @@ class CharacterManager {
     // SETTERS //
     
     public function setDb(PDO $db) {
-        $this->_db = $db;
+        $this->_db = $this->dbConnect();
     }
     
 }
