@@ -22,21 +22,16 @@ if (isset($_SESSION['perso'])){
 
 try {
     if(isset($_POST['create']) && isset($_POST['name'])){
-        echo 'test';
         createCharacter(['name' => $_POST['name']]);
     }
     elseif (isset($_POST['use']) && isset($_POST['name'])) {
-        echo 'test2';
         useCharacter($_POST['name']);
     }
     elseif (isset($_GET['hit'])) {
-        echo 'test3';
         if (!isset($perso)){
-            $message = 'Please log in in orderor create a new character to perform this action ';
-            echo 'test4';
+            $message = 'Please log in or create a new character in order to perform this action ';
         }
         else{
-            echo 'test5' . $perso->getName();
             hitCharacter($_GET['hit']);
         }
     }

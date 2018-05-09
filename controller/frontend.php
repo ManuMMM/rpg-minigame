@@ -63,7 +63,7 @@ function useCharacter($name) {
     }
     // Else tell the user that this character doesn't exist
     else {
-        $message = 'The character doesn\'t exist';
+        $error = 'The character doesn\'t exist';
         // Require the view
         require('view/frontend/formView.php');
     }
@@ -73,6 +73,8 @@ function useCharacter($name) {
 function hitCharacter($id) {
     // Create a new characterManager
     $manager = new CharacterManager();
+    // Restore the $perso of the session
+    $perso = $_SESSION['perso'];
     
     if (!$manager->exists((int) $id)){
         $message = 'The character you want to hit doesn\'t exist !';
@@ -80,8 +82,6 @@ function hitCharacter($id) {
     else{
         // Fetch the character to be hit
         $persoToHit = $manager->getCharacter((int) $id);
-        //
-        $perso = $_SESSION['perso'];
         // Hit the targeted character
         $feedback = $perso->hit($persoToHit);
         // We get the matching output
