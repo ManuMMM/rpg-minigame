@@ -8,14 +8,16 @@
  * @author Manu
  */
 
+require_once('model/Manager.php');
+
 class CharacterManager extends Manager {
     
     private $_db;
     
     // Constructor //
     
-    public function __construct($db) {
-        $this->setDb($db);
+    public function __construct() {
+        $this->setDb();
     }
     
     // Function Hydratation //    
@@ -54,7 +56,7 @@ class CharacterManager extends Manager {
     public function delete(Character $perso) {
         // Execute a DELETE request
         $req = $this->getDb()->prepare('DELETE FROM characters WHERE id = :id');
-        $req->$req->bindValue(':id', $perso->getId(), PDO::PARAM_INT);
+        $req->bindValue(':id', $perso->getId(), PDO::PARAM_INT);
         $req->execute();
         // Finish processing the request
         $req->closeCursor();
@@ -144,7 +146,7 @@ class CharacterManager extends Manager {
     
     // SETTERS //
     
-    public function setDb(PDO $db) {
+    public function setDb() {
         $this->_db = $this->dbConnect();
     }
     

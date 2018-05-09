@@ -14,10 +14,11 @@
 class Manager {
     protected function dbConnect()
     {
-        $dsn = 'mysql:host=localhost;dbname=mini_jeu_de_combat;charset=utf8';
+        $dsn = 'mysql:host=localhost;dbname=rpg_minigame;charset=utf8';
         $user = 'root';
         $password = '';
         $db = new PDO($dsn, $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         return $db;
     }
 }

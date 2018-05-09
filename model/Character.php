@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Description of Personnage
+ * Description of Character
  * -----------------------------------------------------------------------------------------
  * Class that will allow to instance a Character Object with the following characteristics:
  *      - Unique ID
  *      - Name
  *      - Damages
  * and the following functionnalities:
- *      - Hit (an other personnage)
+ *      - Hit (an other character)
  *      - Receive damages
  * -----------------------------------------------------------------------------------------
  * @author Manu
@@ -67,6 +67,11 @@ class Character {
         
         // Otherwise we will just return a value stating that the character has been hit
         return self::CHARACTER_HIT;
+    }
+    
+    public function valideName() {
+        // Will check if the name is empty and return the opposite
+        return !empty($this->getName());
     }
     
     // GETTERS //
