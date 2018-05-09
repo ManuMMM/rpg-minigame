@@ -1,10 +1,4 @@
 <?php
-// Load the Autolader (which willmanage to load the required class when needed)
-// require_once() statement is identical to require()
-// except PHP will check if the file has already been
-// included, and if so, not include (require) it again.
-require_once 'model/Autoloader.php';
-Autoloader::register();
 
 // Create a character
 function createCharacter($name) {
@@ -56,7 +50,6 @@ function useCharacter($name) {
         // We save it in a variable session in order to save a SQL request
         if (isset($perso)){
             $_SESSION['perso'] = $perso;
-            echo 'Session[\'perso\'] bien sauvegardée';
         }
         // Require the view
         require('view/frontend/playView.php');
@@ -70,11 +63,9 @@ function useCharacter($name) {
 }
 
 //Hit a character
-function hitCharacter($id) {
+function hitCharacter($id, $perso) {
     // Create a new characterManager
     $manager = new CharacterManager();
-    // Restore the $perso of the session
-    $perso = $_SESSION['perso'];
     
     if (!$manager->exists((int) $id)){
         $message = 'The character you want to hit doesn\'t exist !';
